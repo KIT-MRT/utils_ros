@@ -13,4 +13,10 @@ namespace utils_ros {
 	 * parameter 'verbosity'.
 	 */
 	void setLoggerLevel (const ros::NodeHandle& nodeHandle);
+
+	/**
+	 * Show summary about node containing name, namespace,
+	 * subscribed and advertised topics.
+	 */
+	void showNodeInfo ();
 }
