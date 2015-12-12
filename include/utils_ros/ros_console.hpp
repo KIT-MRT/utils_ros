@@ -16,15 +16,46 @@ namespace utils_ros {
 inline void setLoggerLevel(const ros::NodeHandle& nodeHandle) {
 
 	using namespace generic_logger;
+	using namespace ros::console;
 
 	set_name(ros::this_node::getName());
 
 	std::string verbosity;
 	if (nodeHandle.getParam("verbosity", verbosity)) {
 
+		/**
+		 * Generic logger level
+		 */
 		boost::to_lower(verbosity);
 		set_sink(std::make_shared<generic_logger::sinks::ros_sink>());
 		set_level(verbosity);
+
+		/**
+		 * Set ROS console level
+		 */
+		ros::console::Level level_ros;
+		bool valid_verbosity {true};
+		if (verbosity == "debug") {
+			level_ros = ros::console::levels::Debug;
+		} else if (verbosity == "info") {
+			level_ros = ros::console::levels::Info;
+		} else if (verbosity == "warn") {
+			level_ros = ros::console::levels::Warn;
+		} else if (verbosity == "error") {
+			level_ros == ros::console::levels::Error;
+		} else if (verbosity == "fatal") {
+			level_ros == ros::console::levels::Fatal;
+		} else {
+			ROS_WARN_STREAM(
+					"Invalid verbosity level specified: " << verbosity << "! Falling back to INFO.");
+			valid_verbosity = false;
+		}
+		if (valid_verbosity) {
+			if (ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, level_ros)) {
+				ros::console::notifyLoggerLevelsChanged();
+				ROS_DEBUG_STREAM("Verbosity set to " << verbosity);
+			}
+		}
 
 	} else {
 		ROS_ERROR_STREAM("Undefined parameter 'verbosity'.");
