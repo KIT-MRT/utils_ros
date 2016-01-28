@@ -1,3 +1,5 @@
+#pragma once
+
 #include <ros/ros.h>
 #include <boost/algorithm/string.hpp>
 
@@ -67,7 +69,7 @@ inline void setLoggerLevel(const ros::NodeHandle& nodeHandle) {
  * Show summary about node containing name, namespace,
  * subscribed and advertised topics.
  */
-void showNodeInfo() {
+inline void showNodeInfo() {
 
 	using namespace ros::this_node;
 
