@@ -11,7 +11,7 @@ inline void getParam(const ros::NodeHandle& node_handle, const std::string key,
 
 	if (!node_handle.getParam(key, val)) {
 		ROS_ERROR_STREAM("Undefined parameter '" << key <<"'.");
-		exit(EXIT_FAILURE);
+		std::exit(EXIT_FAILURE);
 	}
 }
 }
