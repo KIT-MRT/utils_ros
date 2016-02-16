@@ -41,7 +41,7 @@ inline void setLoggerLevel(const ros::NodeHandle& nodeHandle) {
 			level_ros = ros::console::levels::Debug;
 		} else if (verbosity == "info") {
 			level_ros = ros::console::levels::Info;
-		} else if (verbosity == "warn") {
+		} else if (verbosity == "warning") {
 			level_ros = ros::console::levels::Warn;
 		} else if (verbosity == "error") {
 			level_ros == ros::console::levels::Error;
