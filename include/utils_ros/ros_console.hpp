@@ -31,7 +31,7 @@ inline void setLoggerLevel(const ros::NodeHandle& nodeHandle) {
 	 */
 	boost::to_lower(verbosity);
 	set_sink(std::make_shared<generic_logger::sinks::ros_sink>());
-	set_level(verbosity);
+	set_level("debug");
 
 	/**
 	 * Set ROS console level
