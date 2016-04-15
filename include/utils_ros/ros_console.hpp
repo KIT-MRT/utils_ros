@@ -45,9 +45,9 @@ inline void setLoggerLevel(const ros::NodeHandle& nodeHandle) {
 	} else if (verbosity == "warning") {
 		level_ros = ros::console::levels::Warn;
 	} else if (verbosity == "error") {
-		level_ros == ros::console::levels::Error;
+		level_ros = ros::console::levels::Error;
 	} else if (verbosity == "fatal") {
-		level_ros == ros::console::levels::Fatal;
+		level_ros = ros::console::levels::Fatal;
 	} else {
 		ROS_WARN_STREAM(
 				"Invalid verbosity level specified: " << verbosity << "! Falling back to INFO.");
