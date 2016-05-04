@@ -7,7 +7,7 @@
   <license>MRT/FZI</license>
   <maintainer email="andre-marcel.hellmund@kit.edu">Andre-Marcel Hellmund</maintainer>
   <author email="andre-marcel.hellmund@kit.edu">Andre-Marcel Hellmund</author>
-  <url type="repository">git@gitlab.mrt.uni-karlsruhe.de:MRT/utils_ros.git</url>
+  <url type="repository">https://gitlab.mrt.uni-karlsruhe.de/MRT/utils_ros.git</url>
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>message_generation</build_depend>
