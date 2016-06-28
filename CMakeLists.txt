@@ -5,7 +5,7 @@ project(utils_ros)
 ###################
 ## find packages ##
 ###################
-include(UseMrtModules)
+find_package(mrt_cmake_modules REQUIRED)
 include(UseMrtStdCompilerFlags)
 include(UseMrtAutoTarget)
 
