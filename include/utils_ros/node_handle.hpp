@@ -5,6 +5,16 @@
 
 namespace utils_ros {
 
+inline std::string getNodeName(const ros::NodeHandle& privateNodeHandle) {
+    std::string name_space = privateNodeHandle.getNamespace();
+    std::stringstream tempString(name_space);
+    std::string name;
+    while (std::getline(tempString, name, '/')) {
+        ;
+    }
+    return name;
+}
+
 template <typename T>
 inline void getParam(const ros::NodeHandle& nodeHandle, const std::string& key, T& val) {
     if (!nodeHandle.getParam(key, val)) {
@@ -38,4 +48,4 @@ inline T getParam(const ros::NodeHandle& nodeHandle, const std::string& key, con
     nodeHandle.getParam(key, val);
     return val;
 }
-}
+} // namespace utils_ros
