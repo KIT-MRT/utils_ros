@@ -67,21 +67,22 @@ inline void setLoggerLevel(const ros::NodeHandle& nodeHandle) {
  */
 inline void showNodeInfo() {
 
-	using namespace ros::this_node;
+		using namespace ros::this_node;
 
-	std::vector<std::string> subscribed_topics, advertised_topics;
-	getSubscribedTopics(subscribed_topics);
-	getAdvertisedTopics(advertised_topics);
+		std::vector<std::string> subscribed_topics, advertised_topics;
+		getSubscribedTopics(subscribed_topics);
+		getAdvertisedTopics(advertised_topics);
 
-	std::ostringstream msg_subscr, msg_advert;
-	for (auto const& t : subscribed_topics) {
-		msg_subscr << t << std::endl;
+		std::ostringstream msg_subscr, msg_advert;
+		for (auto const& t : subscribed_topics) {
+			msg_subscr << "\t\t" << t << std::endl;
+		}
+		for (auto const& t : advertised_topics) {
+			msg_advert << "\t\t" << t << std::endl;
+		}
+
+		ROS_DEBUG_STREAM("Started '" << getName() << "' in namespace '" << getNamespace() << "'." << std::endl
+						 << "\tSubscribed topics: " << std::endl << msg_subscr.str()
+						 << "\tAdvertised topics: " << std::endl << msg_advert.str());
 	}
-	for (auto const& t : advertised_topics) {
-		msg_advert << t << std::endl;
-	}
-
-	ROS_INFO_STREAM(
-			"Started '" << getName() << "' in namespace '" << getNamespace() << "'." << std::endl << "Subscribed topics: " << std::endl << msg_subscr.str() << "Advertised topics: " << std::endl << msg_advert.str());
-}
 }
