@@ -85,6 +85,7 @@ endif()
 file(GLOB PROJECT_HEADER_FILES_INC RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "include/*.h")
 file(GLOB PROJECT_SOURCE_FILES_INC RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "src/*.h")
 file(GLOB PROJECT_SOURCE_FILES_SRC RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "src/*.cpp")
+file(GLOB SCRIPT_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "scripts/*")
 
 if (PROJECT_SOURCE_FILES_SRC)
 	set(LIBRARY_NAME ${PROJECT_NAME})
@@ -104,6 +105,17 @@ catkin_package(
   LIBRARIES ${LIBRARY_NAME} ${mrt_EXPORT_LIBRARIES}
   CATKIN_DEPENDS ${catkin_EXPORT_DEPENDS}
 )
+
+catkin_python_setup()
+if(SCRIPT_FILES)
+    catkin_install_python(
+                PROGRAMS ${SCRIPT_FILES}
+                DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+                )
+endif()
+
+
+
 
 ###########
 ## Build ##
