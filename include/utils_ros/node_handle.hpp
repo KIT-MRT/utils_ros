@@ -48,4 +48,21 @@ inline T getParam(const ros::NodeHandle& nodeHandle, const std::string& key, con
     nodeHandle.getParam(key, val);
     return val;
 }
+
+template <>
+inline unsigned int getParam(const ros::NodeHandle& nodeHandle, const std::string& key) {
+    if (!nodeHandle.hasParam(key)) {
+        ROS_ERROR_STREAM("Parameter '" << key << "' is not defined.");
+        std::exit(EXIT_FAILURE);
+    }
+    int val;
+    nodeHandle.getParam(key, val);
+
+    if (val < 0) {
+        ROS_ERROR_STREAM("Parameter '"  << key << "' is negative, but should be unsigned!");
+        std::exit(EXIT_FAILURE);
+    }
+    return static_cast<unsigned int>(val);
+}
+
 } // namespace utils_ros
