@@ -24,7 +24,8 @@ inline void getParam(const ros::NodeHandle& nodeHandle, const std::string& key, 
 }
 
 template <typename T>
-inline void getParam(const ros::NodeHandle& nodeHandle, const std::string& key, T& val, const T& defaultValue) {
+inline void getParam(const ros::NodeHandle& nodeHandle, const std::string& key, T& val,
+                     const T& defaultValue) {
     nodeHandle.param(key, val, defaultValue);
 }
 
@@ -40,7 +41,8 @@ inline T getParam(const ros::NodeHandle& nodeHandle, const std::string& key) {
 }
 
 template <typename T>
-inline T getParam(const ros::NodeHandle& nodeHandle, const std::string& key, const T& defaultValue) {
+inline T getParam(const ros::NodeHandle& nodeHandle, const std::string& key,
+                  const T& defaultValue) {
     if (!nodeHandle.hasParam(key)) {
         return defaultValue;
     }
@@ -59,7 +61,7 @@ inline unsigned int getParam(const ros::NodeHandle& nodeHandle, const std::strin
     nodeHandle.getParam(key, val);
 
     if (val < 0) {
-        ROS_ERROR_STREAM("Parameter '"  << key << "' is negative, but should be unsigned!");
+        ROS_ERROR_STREAM("Parameter '" << key << "' is negative, but should be unsigned!");
         std::exit(EXIT_FAILURE);
     }
     return static_cast<unsigned int>(val);
