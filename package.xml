@@ -7,6 +7,7 @@
   <license>MRT/FZI</license>
   <maintainer email="andre-marcel.hellmund@kit.edu">Andre-Marcel Hellmund</maintainer>
   <author email="andre-marcel.hellmund@kit.edu">Andre-Marcel Hellmund</author>
+  <author email="sascha.wirges@kit.edu">Sascha Wirges</author>
   <url type="repository">https://gitlab.mrt.uni-karlsruhe.de/MRT/utils_ros.git</url>
 
   <buildtool_depend>catkin</buildtool_depend>
